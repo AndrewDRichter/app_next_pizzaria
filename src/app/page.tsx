@@ -1,9 +1,40 @@
+import { api } from '@/services/api';
 import styles from './page.module.scss';
 import jakaruImg from '/public/logo_ok.svg'
 import Image from 'next/image';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 export default function Page() {
+
+  async function handleSignIn(formData: FormData) {
+    'use server'
+
+    const email = formData.get('email')
+    const password = formData.get('password')
+
+    if (email === '' || password === '') {
+      return;
+    }
+
+    try {
+      const response = await api.post('/login', {
+        email,
+        password
+      })
+
+      if (!response.data.token) {
+        return;
+      }
+
+      console.log(response.data)
+    } catch (err) {
+      console.log(`Error: ${err}`)
+      return;
+    }
+    redirect('/dashboard')
+  }
+
   return (
     <>
       <div className={styles.containerCenter}>
@@ -15,7 +46,7 @@ export default function Page() {
         />
 
         <section className={styles.login}>
-          <form>
+          <form action={handleSignIn}>
             <input
               type='email'
               required

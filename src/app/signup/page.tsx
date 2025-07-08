@@ -24,10 +24,11 @@ export default function Signup() {
                 email,
                 password
             })
-            redirect("/")
         } catch (err) {
             console.log(`Error: ${err}`)
+            return;
         }
+        redirect("/")
     }
 
     return (
