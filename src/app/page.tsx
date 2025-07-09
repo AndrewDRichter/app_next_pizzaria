@@ -4,6 +4,7 @@ import jakaruImg from '/public/logo_ok.svg'
 import Image from 'next/image';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import { cookies } from 'next/headers';
 
 export default function Page() {
 
@@ -26,6 +27,16 @@ export default function Page() {
       if (!response.data.token) {
         return;
       }
+
+      const expressTime = 60 * 60 * 24 * 30 * 1000;
+      const cookieStore = await cookies();
+
+      cookieStore.set('session', response.data.token, {
+        maxAge: expressTime,
+        path: '/',
+        httpOnly: false,
+        secure: process.env.NODE_ENV === 'production'
+      })
 
       console.log(response.data)
     } catch (err) {
