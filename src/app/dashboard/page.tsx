@@ -1,11 +1,12 @@
 import { cookies } from "next/headers";
 
-export default function Dashboard() {
+export default async function Dashboard() {
 
-    const cookieStorage = await cookies();
-    if (cookieStorage.get('session')) {
-        console.log(cookieStorage.get('session'))
-    }
+    // const cookieStorage = await cookies();
+    // if (cookieStorage.get('session')) {
+    //     console.log(cookieStorage.get('session')?.value)
+    // }
+
 
     return (
         <>
