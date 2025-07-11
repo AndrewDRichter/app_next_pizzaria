@@ -1,0 +1,30 @@
+.ordersContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        color: var(--white);
+    }
+}
+
+.containerHeader {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+
+    button {
+        background: transparent;
+        border: 0;
+        color: var(--green-900);
+        transition: color .8s;
+        transition: transform .5s;
+
+        &:hover {
+            color: var(--white);
+            transform: rotateZ(90deg);
+        }
+    }
+}

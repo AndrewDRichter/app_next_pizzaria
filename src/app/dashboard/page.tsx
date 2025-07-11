@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { Orders } from "./components/orders";
 
 export default async function Dashboard() {
 
@@ -10,7 +11,7 @@ export default async function Dashboard() {
 
     return (
         <>
-            <h1>Dashboard page</h1>
+            <Orders />
         </>
     )
 }
