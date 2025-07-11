@@ -53,7 +53,8 @@ export default function Page() {
           src={jakaruImg}
           alt='Company logo'
           width={300}
-          priority
+          priority={true}
+          quality={100}
         />
 
         <section className={styles.login}>

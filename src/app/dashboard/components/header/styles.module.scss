@@ -1,0 +1,41 @@
+.headerContainer {
+    height: 5rem;
+}
+
+.headerContent {
+    max-width: 1200px;
+    height: 5rem;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+
+        a {
+            color: var(--white);
+            transition: color .5s;
+
+            &:hover,
+            &:focus {
+                color: var(--red-700);
+            }
+        }
+
+        button {
+            border: 0;
+            background: transparent;
+            margin-left: 20px;
+            transition: transform .5s;
+
+            &:hover,
+            &:focus {
+                transform: scale(1.15);
+            }
+        }
+    }
+}
