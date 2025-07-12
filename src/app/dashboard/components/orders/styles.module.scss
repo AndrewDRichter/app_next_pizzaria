@@ -25,23 +25,8 @@
 
 
         &:hover {
-            // transform: rotate(180deg);
-
-            animation-duration: 1s;
-            animation-name: spinUpdate;
-            animation-iteration-count: infinite;
-            animation-direction: normal;
+            transform: rotate(90deg);
         }
-    }
-}
-
-@keyframes spinUpdate {
-    from {
-        transform: rotate(0def);
-    }
-
-    to {
-        transform: rotate(180deg);
     }
 }
 

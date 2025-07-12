@@ -65,7 +65,8 @@
     &:hover,
     &:focus {
         transform: scale(1.02);
-        background-color: var(--dark-700);
+        // background-color: var(--dark-700);
+        filter: brightness(1.5);
     }
 }
 
