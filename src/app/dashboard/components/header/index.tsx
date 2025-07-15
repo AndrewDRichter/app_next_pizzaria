@@ -6,6 +6,7 @@ import logoImg from '/public/logo_ok.svg';
 import { LogOutIcon } from 'lucide-react';
 import { deleteCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 export function Header() {
 
@@ -13,7 +14,7 @@ export function Header() {
 
     async function handleLogout() {
         deleteCookie('session', { path: '/' })
-
+        toast.info('Sessão finalizada.')
         router.replace('/')
     }
 

@@ -5,8 +5,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
+import { toast } from 'sonner';
+import { getCookieServer } from '@/lib/cookieServer';
 
-export default function Page() {
+export default async function Page() {
 
   async function handleSignIn(formData: FormData) {
     'use server'
@@ -38,11 +40,16 @@ export default function Page() {
         secure: process.env.NODE_ENV === 'production'
       })
 
-      console.log(response.data)
+
     } catch (err) {
       console.log(`Error: ${err}`)
       return;
     }
+    redirect('/dashboard')
+  }
+
+  const token = await getCookieServer();
+  if (token) {
     redirect('/dashboard')
   }
 

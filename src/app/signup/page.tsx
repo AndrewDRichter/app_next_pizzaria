@@ -4,6 +4,7 @@ import jakaruImg from '/public/logo_ok.svg'
 import Image from "next/image"
 import Link from "next/link"
 import { redirect } from 'next/navigation';
+import { toast } from 'sonner';
 
 export default function Signup() {
 
@@ -28,6 +29,7 @@ export default function Signup() {
             console.log(`Error: ${err}`)
             return;
         }
+        toast.success('Cadastrado com sucesso.')
         redirect("/")
     }
 
