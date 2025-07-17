@@ -1,0 +1,63 @@
+.dialogContainer {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 16px;
+    backdrop-filter: blur(8px);
+}
+
+.dialogContent {
+    background-color: var(--dark-700);
+    margin: auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    color: var(--white);
+
+    h2 {
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+}
+
+.tableInfo {
+    background-color: var(--dark-900);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.dialogCloseButton {
+    background-color: transparent;
+    border: 0;
+}
+
+.itemContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+.itemDescription {
+    color: #959595;
+    margin-top: 8px;
+}
+
+.finishOrderButton {
+    border: none;
+    background-color: var(--dark-900);
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: var(--red-900);
+}

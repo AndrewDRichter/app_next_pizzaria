@@ -106,12 +106,6 @@ export function Form({ categories }: Props) {
                     {categories.map((category, index) => (
                         <option key={category.id} value={index}>{category.name}</option>
                     ))}
-                    <option key={1} value={1}>
-                        Pizzas
-                    </option>
-                    <option key={2} value={2}>
-                        Massas
-                    </option>
                 </select>
 
                 <input
