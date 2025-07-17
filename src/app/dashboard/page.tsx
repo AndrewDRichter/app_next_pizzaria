@@ -1,17 +1,33 @@
-import { cookies } from "next/headers";
 import { Orders } from "./components/orders";
+import { api } from "@/services/api";
+import { getCookieServer } from "@/lib/cookieServer";
+import { OrderProps } from "@/lib/order.type";
+
+async function getOrders(): Promise<OrderProps[] | []> {
+    try {
+        const token = await getCookieServer();
+
+        const response = await api.get('/orders', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+
+        return response.data || [];
+
+    } catch (err) {
+        console.log(err);
+        return [];
+    }
+}
 
 export default async function Dashboard() {
 
-    // const cookieStorage = await cookies();
-    // if (cookieStorage.get('session')) {
-    //     console.log(cookieStorage.get('session')?.value)
-    // }
-
+    const orders = await getOrders();
 
     return (
         <>
-            <Orders />
+            <Orders orders={orders} />
         </>
     )
 }
