@@ -37,7 +37,10 @@
 }
 
 .dialogCloseButton {
+    display: flex;
+    width: 100%;
     background-color: transparent;
+    justify-content: end;
     border: 0;
 }
 
@@ -53,6 +56,13 @@
     margin-top: 8px;
 }
 
+.buttonContainer {
+    display: flex;
+    width: 100%;
+    background-color: transparent;
+    justify-content: end;
+}
+
 .finishOrderButton {
     border: none;
     background-color: var(--dark-900);
@@ -60,4 +70,8 @@
     border-radius: 5px;
     font-weight: bold;
     color: var(--red-900);
+}
+
+.tableName {
+    margin-left: 20px;
 }

@@ -5,7 +5,7 @@ import { use } from 'react';
 import { OrderContext } from '@/providers/order';
 
 export function OrderModal() {
-    const { onRequestClose } = use(OrderContext);
+    const { onRequestClose, items, finishOrder } = use(OrderContext);
 
     return (
         <dialog className={styles.dialogContainer}>
@@ -20,18 +20,29 @@ export function OrderModal() {
                 <article className={styles.infoContainer}>
                     <h2>Detalhes do pedido</h2>
 
-                    <span className={styles.tableInfo}>
-                        Mesa <b>2</b>
-                    </span>
+                    {items[0] && (
+                        <span className={styles.tableInfo}>
+                            Mesa <b>{items[0].Order.table}</b>
+                        </span>
+                    )}
 
-                    <section className={styles.itemContainer}>
-                        <span>1 - <b>Coca cola lata</b></span>
-                        <span className={styles.itemDescription}>Coca cola geladinha tamanho lata</span>
-                    </section>
+                    {items[0]?.Order.name && (
+                        <span className={styles.tableName}>
+                            <b>{items[0].Order.name}</b>
+                        </span>
+                    )}
 
-                    <button className={styles.finishOrderButton}>
-                        Concluir pedido
-                    </button>
+                    {items.map((item) => (
+                        <section key={item.id} className={styles.itemContainer}>
+                            <span>{item.amount} - <b>{item.Product.name}</b></span>
+                            <span className={styles.itemDescription}>{item.Product.description}</span>
+                        </section>
+                    ))}
+                    <div className={styles.buttonContainer}>
+                        <button className={styles.finishOrderButton} onClick={() => finishOrder(items[0].order_id)}>
+                            Concluir pedido
+                        </button>
+                    </div>
 
                 </article>
             </section>

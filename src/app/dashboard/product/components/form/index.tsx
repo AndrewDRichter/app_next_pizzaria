@@ -34,7 +34,6 @@ export function Form({ categories }: Props) {
             return;
         }
 
-        console.log(categories[Number(categoryIndex)])
         const data = new FormData();
         data.append('name', name);
         data.append('price', price);

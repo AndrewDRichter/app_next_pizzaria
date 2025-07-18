@@ -5,6 +5,8 @@ import { RefreshCwIcon } from 'lucide-react';
 import { OrderProps } from '@/lib/order.type';
 import { OrderModal } from '../modal';
 import { OrderContext } from '@/providers/order';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 interface OrdersProps {
     orders: OrderProps[] | [];
@@ -12,9 +14,15 @@ interface OrdersProps {
 
 export function Orders({ orders }: OrdersProps) {
     const { isOpen, onRequestOpen } = use(OrderContext)
+    const router = useRouter();
 
-    function handleOrderDetail(order_id: string) {
-        onRequestOpen(order_id)
+    async function handleOrderDetail(order_id: string) {
+        await onRequestOpen(order_id)
+    }
+
+    function handleRefresh() {
+        router.refresh();
+        toast.info('Lista atualizada.')
     }
 
     return (
@@ -23,7 +31,7 @@ export function Orders({ orders }: OrdersProps) {
 
                 <section className={styles.containerHeader}>
                     <h1>Latest orders</h1>
-                    <button>
+                    <button onClick={handleRefresh}>
                         <RefreshCwIcon
                             size={24}
                             color='#3fffa3'
@@ -32,6 +40,13 @@ export function Orders({ orders }: OrdersProps) {
                 </section>
 
                 <section className={styles.listOrders}>
+
+                    {orders.length === 0 && (
+                        <span className={styles.emptyOrders}>
+                            Não há pedidos no momento.
+                        </span>
+                    )}
+
                     {orders.map((order) => (
                         <button
                             className={styles.orderItem}
