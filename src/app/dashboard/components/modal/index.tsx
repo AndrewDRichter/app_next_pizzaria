@@ -3,6 +3,7 @@ import styles from './styles.module.scss';
 import { X } from 'lucide-react';
 import { use } from 'react';
 import { OrderContext } from '@/providers/order';
+import Image from 'next/image';
 
 export function OrderModal() {
     const { onRequestClose, items, finishOrder } = use(OrderContext);
@@ -34,6 +35,14 @@ export function OrderModal() {
 
                     {items.map((item) => (
                         <section key={item.id} className={styles.itemContainer}>
+                            {/* {item.Product.banner && (
+                                <Image
+                                    src={item.Product.banner}
+                                    alt='Foto do produto'
+                                    width={100}
+                                    height={100}
+                                />
+                            )} */}
                             <span>{item.amount} - <b>{item.Product.name}</b></span>
                             <span className={styles.itemDescription}>{item.Product.description}</span>
                         </section>
