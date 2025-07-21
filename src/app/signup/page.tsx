@@ -29,7 +29,7 @@ export default function Signup() {
             console.log(`Error: ${err}`)
             return;
         }
-        toast.success('Cadastrado com sucesso.')
+        // toast.success('Cadastrado com sucesso.')
         redirect("/")
     }
 
